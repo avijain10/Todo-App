@@ -1,12 +1,12 @@
 import React from "react";
-import Joke from "./Joke";
-import jokesData from "./jokesData";
+import Product from "./Product";
+import productsData from "./productsData";
 
 function App() {
-  const jokeComponents = jokesData.map((joke) => (
-    <Joke key={Joke.id} question={joke.question} answer={joke.answer} />
+  const productComponents = productsData.map((product) => (
+    <Product key={Product.id} item={product.item} />
   ));
 
-  return <div>{jokeComponents}</div>;
+  return <div>{productComponents}</div>;
 }
 export default App;
