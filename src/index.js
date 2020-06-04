@@ -1,45 +1,59 @@
-import React, { Component } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-// import App from "./App";
+import App from "./App";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Header username="Avi" />
-        <Greeting />
-      </div>
-    );
-  }
-}
+//class App extends React.Component {
+//constructor() {
+//super();
+//this.state = {
+//isLoggedIn: false,
+//};
+//}
+//render() {
+//let word;
+//if (this.state.isLoggedIn == true) {
+//word = "in";
+//} else {
+//  word = "out";
+// }
 
-class Header extends React.Component {
-  render() {
-    return (
-      <header>
-        <p>Welcome, {this.props.username}</p>
-      </header>
-    );
-  }
-}
+//return (
+//<div>
+//<h1> You are cureently logged {word} </h1>
+//<Header username="Avi" />
+//<Greeting />
+// </div>
+//);
+//}
+//}
 
-class Greeting extends Component {
-  render() {
-    const date = new Date();
-    const hours = date.getHours();
-    let timeofday;
+//class Header extends React.Component {
+//  render() {
+//  return (
+//  <header>
+//  <p>Welcome, {this.props.username}</p>
+//    </header>
+//);
+// }
+//}
 
-    if (hours < 12) {
-      timeofday = "morning";
-    } else if (hours >= 12 && hours < 17) {
-      timeofday = "afternoon";
-    } else {
-      timeofday = "night";
-    }
+//class Greeting extends Component {
+//  render() {
+//    const date = new Date();
+//   const hours = date.getHours();
+// let timeofday;
 
-    return <h1>Good {timeofday}</h1>;
-  }
-}
+//if (hours < 12) {
+//timeofday = "morning";
+//  } else if (hours >= 12 && hours < 17) {
+//  timeofday = "afternoon";
+// } else {
+// timeofday = "night";
+//}
+
+// return <h1>Good {timeofday}</h1>;
+//}
+//}
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
