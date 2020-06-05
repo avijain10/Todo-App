@@ -81,19 +81,23 @@ class App extends React.Component {
     this.state = {
       firstName: "",
       lastName: "",
+      isFriendly: false,
+      gender: "",
+      favColor: "blue",
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
+    const { name, value, type, checked } = event.target;
+    type === "checkbox"
+      ? this.setState({ [name]: checked })
+      : this.setState({ [name]: value });
   }
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input
           type="text"
           name="firstName"
@@ -107,9 +111,61 @@ class App extends React.Component {
           placeholder="last name"
           onChange={this.handleChange}
         />
+        <br />
+        <textArea value={"Some Text"} onChange={this.handleChange} />
+        <br />
+        <lable>
+          <input
+            type="radio"
+            name="gender"
+            value="male"
+            checked={this.state.gender === "male"}
+            onChange={this.handleChange}
+          />
+          Male
+        </lable>
+        <br />
+        <lable>
+          <input
+            type="radio"
+            name="gender"
+            value="female"
+            checked={this.state.gender === "female"}
+            onChange={this.handleChange}
+          />
+          Female
+        </lable>
+        <br />
+
+        <lable>
+          <input
+            type="checkbox"
+            name="isFriendly"
+            checked={this.state.isFriendly}
+            onChange={this.handleChange}
+          />
+          Is Friendly?
+        </lable>
+        <br />
+        <label>Fav Color:</label>
+        <select
+          value={this.state.favColor}
+          name="favColor"
+          onChange={this.handleChange}
+        >
+          <option value="blue">blue</option>
+          <option value="green">green</option>
+          <option value="pink">pink</option>
+          <option value="red">red</option>
+        </select>
+
         <h1>
-          {this.state.firstName} {this.state.lastName}{" "}
+          {this.state.firstName} {this.state.lastName} {this.state.isFriendly}
         </h1>
+        <h2>you are a {this.state.gender}</h2>
+        <h2>your fav color is {this.state.favColor}</h2>
+        <br />
+        <button>Submit</button>
       </form>
     );
   }
