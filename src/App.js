@@ -1,41 +1,67 @@
 import React from "react";
-import TodoItem from "./TodoItem";
-import todosData from "./todosData";
+//import TodoItem from "./TodoItem";
+//import todosData from "./todosData";
+import Conditional from "./Conditional";
 
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
-      todos: todosData,
-    };
-    this.handleChange = this.handleChange.bind(this);
+    this.state = { isLoading: true };
   }
 
-  handleChange(id) {
-    this.setState((prevState) => {
-      const updatedTodos = prevState.todos.map((todo) => {
-        if (todo.id === id) {
-          todo.completed = !todo.completed;
-        }
-        return todo;
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        isLoading: false,
       });
-      return {
-        todos: updatedTodos,
-      };
-    });
+    }, 1500);
   }
-  render() {
-    const todoItems = this.state.todos.map((todoitem) => (
-      <TodoItem
-        key={todoitem.id}
-        todoitem={todoitem}
-        handleChange={this.handleChange}
-      />
-    ));
 
-    return <div className="todo-list">{todoItems}</div>;
+  render() {
+    return (
+      <div>
+        <Conditional isLoading={this.state.isLoading} />
+      </div>
+    );
   }
 }
+
+export default App;
+
+//class App extends React.Component {
+//constructor() {
+//super();
+//    this.state = {
+//    todos: todosData,
+//};
+// this.handleChange = this.handleChange.bind(this);
+// }
+
+//  handleChange(id) {
+//  this.setState((prevState) => {
+//  const updatedTodos = prevState.todos.map((todo) => {
+//  if (todo.id === id) {
+//  todo.completed = !todo.completed;
+//       }
+//     return todo;
+// });
+//    return {
+//    todos: updatedTodos,
+//};
+//  });
+// }
+//render() {
+//const todoItems = this.state.todos.map((todoitem) => (
+//<TodoItem
+//key={todoitem.id}
+//    todoitem={todoitem}
+//  handleChange={this.handleChange}
+// />
+// ));
+
+//return <div className="todo-list">{todoItems}</div>;
+//  }
+//}
 
 //function handleClick() {
 // console.log("i was clicked");
@@ -91,7 +117,6 @@ class App extends React.Component {
 // );
 // }
 //}
-export default App;
 
 //lifecycle methods part-1 :
 
