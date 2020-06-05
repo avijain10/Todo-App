@@ -6,21 +6,35 @@ import Conditional from "./Conditional";
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { isLoading: true };
+    this.state = {
+      isLoggedIn: true,
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        isLoading: false,
-      });
-    }, 1500);
+  //componentDidMount() {
+  //setTimeout(() => {
+  //this.setState({
+  //isLoading: false,
+  //    });
+  //}, 1500);
+  // }
+
+  handleClick() {
+    this.setState((prevState) => {
+      return {
+        isLoggedIn: !prevState.isLoggedIn,
+      };
+    });
   }
 
   render() {
+    let btntext = this.state.isLoggedIn ? "LOG IN" : "LOG OUT";
+    let displaytext = this.state.isLoggedIn ? "Logged out" : "Logged in";
     return (
       <div>
-        <Conditional isLoading={this.state.isLoading} />
+        <button onClick={this.handleClick}>{btntext}</button>
+        <h1>{displaytext}</h1>
       </div>
     );
   }
